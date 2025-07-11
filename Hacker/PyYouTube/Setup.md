@@ -1,42 +1,31 @@
----
-title: 'Downloading YouTube Videos with Python'
-name: "FredBear2223"
-email: "monte.shaffer@gmail.com"
-output:
-  html_document
----
-
 # Windows 11 Setup
 * Install Python
 * Install `pytubefix`
 ```
 pip install pytubefix
 ```
-* Setup RStudio to run python 
+* Run script Setup.py from CMD line 
+Browse to Setup.py folder and right click, Open in Terminal
 
-```{r}
-install.packages("reticulate", dependencies = TRUE);
-library(reticulate);
+```
+python ./Setup.py 
 ```
 
-```{python}
-x = 9
-
-def squared(x):
- return x*x
-
-print(squared(x))
 ```
-* Download YouTube video
+python ./Setup.py -k 9bZkp7q19f0
+```
+
+```
+python ./Setup.py -k _d2BCEI9DxA 
+```
+
+
+* More information
 https://github.com/JuanBindez/pytubefix
 
+* setup ffmpeg for .cli.py to also work on larger/newer videos
 
-```{python}
-#!pip install pytubefix
-py_run_file("Setup.py")
-```
-
-# setup ffmpeg for .cli.py to also work 
+Audio and Video are separately streamed and then ffmpeg merges them into mp4
 
 
 
