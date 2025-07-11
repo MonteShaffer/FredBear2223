@@ -4,19 +4,19 @@
 ```
 pip install pytubefix
 ```
-* Run script Setup.py from CMD line 
-Browse to Setup.py folder and right click, Open in Terminal
+* Run script yt_single.py from CMD line 
+Browse to yt_single.py folder and right click, Open in Terminal
 
 ```
-python ./Setup.py 
-```
-
-```
-python ./Setup.py -k 9bZkp7q19f0
+python ./yt_single.py 
 ```
 
 ```
-python ./Setup.py -k _d2BCEI9DxA 
+python ./yt_single.py -k 9bZkp7q19f0
+```
+
+```
+python ./yt_single.py -k _d2BCEI9DxA 
 ```
 
 

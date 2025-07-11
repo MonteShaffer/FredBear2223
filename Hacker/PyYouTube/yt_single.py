@@ -46,6 +46,6 @@ ys.download(output_path=options.local, filename_prefix=yt.video_id+"^"+ys.resolu
 
 
 # usage 
-# python ./Setup.py 
-# python ./Setup.py -k 9bZkp7q19f0
-# python ./Setup.py -k _d2BCEI9DxA
+# python ./yt_single.py 
+# python ./yt_single.py -k 9bZkp7q19f0
+# python ./yt_single.py -k _d2BCEI9DxA
