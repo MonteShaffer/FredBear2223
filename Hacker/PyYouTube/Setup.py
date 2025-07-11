@@ -41,9 +41,11 @@ print(yt.title)
 # options.key = yt.video_id
 
 ys = yt.streams.get_highest_resolution()
-ys.download(output_path=options.local, filename_prefix=yt.video_id+"_", skip_existing=True)
+print(ys.resolution)
+ys.download(output_path=options.local, filename_prefix=yt.video_id+"^"+ys.resolution+"^", skip_existing=True)
 
 
 # usage 
 # python ./Setup.py 
 # python ./Setup.py -k 9bZkp7q19f0
+# python ./Setup.py -k _d2BCEI9DxA
