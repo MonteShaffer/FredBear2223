@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BounceSphere Interactive Demo</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="css/bounceSphere.css">
+</head>
+<body>
+
+<h2>Interactive Bouncing Spheres with Mouse Throw</h2>
+
+<button id="addBall">Add New Ball</button>
+<div id="box"></div>
+
+<script src="js/jquery.bounceSphere.js"></script>
+<script>
+const demo = $("#box").bounceSphere({
+    width: 700,
+    height: 450,
+    gravity: 0.0,
+    restitution: 0.9,
+    speed: 16,
+    spheres: [
+        { radius: 12, mass: 1, color: "red" },
+        { radius: 18, mass: 3, color: "blue" },
+        { radius: 10, mass: 0.5, color: "green" }
+    ]
+});
+
+$("#addBall").click(function() {
+    demo.addBall({
+        radius: Math.floor(Math.random() * 15) + 8,
+        mass: Math.random() * 3 + 0.5,
+        color: ["red","blue","green","orange","purple"][Math.floor(Math.random()*5)]
+    });
+});
+</script>
+
+</body>
+</html>
