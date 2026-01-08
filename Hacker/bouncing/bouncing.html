@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+	<TITLE>Bounce!
+	</TITLE>
+	
+<STYLE>
+	#border {
+			width: 600px;
+			height: 480px;
+			border: 2px solid black;
+			margin: 0 auto;
+			position: relative;
+	}
+	#sphere {
+			width: 20px;
+			height: 20px;
+			color: orange;
+			background-color: brown;
+			border-radius: 50%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			}
+</STYLE>
+
+<SCRIPT>
+function getRandomInteger(min, max) {
+  // Ensure min and max are integers (optional, depending on input)
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  // The expression generates a number in the range [min, max] inclusive
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+   // your page initialization code here
+var nx = cx = px = cy = ny = py = 0;
+var dt = 2; // milliseconds to make the move 
+var dx = [-10,10]; // velocity potential in x direction 
+var dy = [-22,22];
+var w = 640; var h=480; var d=22;   
+
+var minX = minY = 0;
+var maxX = w; var maxY = h;
+var vx = getRandomInteger(dx[0],dx[1]); 
+var vy = getRandomInteger(dy[0],dy[1]); 
+
+
+
+function moveSphere(x,y)
+	{
+	var el = document.getElementById("sphere");
+		el.style.left = "" + x + "px";
+		el.style.top = "" + y + "px";	
+	}
+
+function randomPosition()
+	{
+	var el = document.getElementById("border");
+		var w = parseInt(el.style.width);
+		var h = parseInt(el.style.height);
+	//console.log(w);
+	//console.log(h);
+	var x = getRandomInteger(1,w);
+	var y = getRandomInteger(1,h);
+	//console.log(x);
+	//console.log(y);
+	moveSphere(x,y);
+	return {x,y}
+	}
+
+function applyMoveBounce()
+	{
+	px = cx; py = cy;
+	nx = cx + vx;
+	ny = cy + vy;
+	
+	
+	//console.log("old x: " + cx + "\t y: " + cy);
+	//console.log("new x: " + nx + "\t y: " + ny);
+	
+	// check to see if it needs to bounce ... if so, let's compute nx 
+	// is it possible they bounce twice?
+	var bounceX = false;	
+	if(nx > maxX) { bounceX = true; vx = -1 * vx; }
+	if(nx < minX) { bounceX = true; vx = -1 * vx; }
+		
+	var bounceY = false;
+	if(ny > maxY) { bounceY = true; vy = -1 * vy; }
+	if(ny < minY) { bounceY = true; vy = -1 * vy; }
+	
+	if(!bounceX && !bounceY) 
+		{
+		// normal move 
+	
+		moveSphere(nx,ny);
+	
+		cx = nx;
+		cy = ny;
+		} else {
+		
+		x2 = nx + vx;
+		y2 = ny + vy;  // this may bumble if both are in the boundardy on same move, should fix in next move 
+		
+		moveSphere(x2,y2);
+		cx = x2;
+		cy = y2;
+		
+		
+		
+		}
+	
+	
+	}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+hi, I am Fredbear2223
+	<div id="border">
+		<div id="sphere"></div>
+	</div>
+
+
+
+<script>
+// self executing function here
+(function() {
+
+	
+	var el = document.getElementById("border");
+		el.style.width = "" + w + "px";
+		el.style.height = "" + h + "px";
+	
+	var current = randomPosition();
+	cx = current.x; 
+	cy = current.y;
+   // the DOM will be available here
+   
+   const loopID = setInterval(applyMoveBounce, dt); // Start the interval
+
+	// alert("Hi Alex!");
+})();
+</script>
+
+
+</BODY>
+</HTML>
